@@ -1,10 +1,9 @@
 # pip install openai
-# key = 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
 
 from openai import OpenAI
 
 client = OpenAI(
-  api_key="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"
+  api_key="open_ai_key"
 )
 
 completion = client.chat.completions.create(
