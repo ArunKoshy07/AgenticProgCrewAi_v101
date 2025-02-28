@@ -1,10 +1,6 @@
-# pip install openai
-
 from openai import OpenAI
 
-client = OpenAI(
-  api_key="open_ai_key"
-)
+client = OpenAI()
 
 completion = client.chat.completions.create(
   model="gpt-4o-mini",
@@ -14,4 +10,4 @@ completion = client.chat.completions.create(
   ]
 )
 
-print(completion.choices[0].message);
+print(completion.choices[0].message)
