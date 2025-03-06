@@ -1,0 +1,41 @@
+{
+    "models": {
+        "llama": {
+            "model_name": "ollama/llama3.2:latest",
+            "base_url": "http://localhost:11434"
+        },
+        "deepseek": {
+            "model_name": "ollama/deepseek-r1:1.5b",
+            "base_url": "http://localhost:11434"
+        }
+    },
+    "agents": {
+        "agent1": {
+            "role": "assistant",
+            "goal": "help with tasks",
+            "backstory": "an AI assistant designed to help with daily tasks",
+            "allow_delegation": true,
+            "verbose": false,
+            "model_name": "deepseek"
+        }
+    },
+     "tasks": {
+        "task1": {
+            "description": "1. Use the content plan to craft a compelling blog post on {topic}. 2. Incorporate SEO keywords naturally. 3. Sections/Subtitles are properly named in an engaging manner. 4. Ensure the post is structured with an engaging introduction, insightful body, and a summarizing conclusion. 5. Proofread for grammatical errors and alignment with the brand's voice.",
+            "expected_output": "A well-written blog post in markdown format, ready for publication, each section should have 2 or 3 paragraphs.",
+            "agent_key": "agent1"
+        },
+        "task2": {
+            "description": "Schedule a meeting",
+            "expected_output": "A calendar invite for a meeting",
+            "agent_key": "agent1"
+        }
+    },
+    "crews": {
+        "crew1": {
+            "agents": ["agent1"],
+            "tasks": ["task1", "task2"],
+            "verbose": true
+        }
+    }
+}

@@ -1,8 +1,0 @@
-{
-    "models": {
-        "llama": {
-            "model_name": "ollama/llama3.2:latest",
-            "base_url": "http://localhost:11434"
-        }
-    }
-}

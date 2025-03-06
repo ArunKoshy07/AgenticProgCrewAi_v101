@@ -2,9 +2,8 @@ from crewai import LLM
 from config import Config
 
 class ModelHandler:
-    def __init__(self, model_key, config_path='model_registry.json'):
+    def __init__(self, model_key, config_path='config.json'):
         self.config = Config.from_json(config_path)
-        print(self.config)
         
         if model_key not in self.config.models:
             raise ValueError(f"Model key '{model_key}' not found in registry.")
@@ -24,12 +23,18 @@ class ModelHandler:
         if self.llm_instance is None:
             self.initialize_model()
         return self.llm_instance
+    
+    def display_model_info(self):
+        if self.llm_instance is None:
+            self.initialize_model()
+        print(f"Model Name: {self.model_name}")
+        print(f"Base URL: {self.base_url}")
 
 # Example usage
 if __name__ == "__main__":
     model_handler = ModelHandler(
-        model_key="llama"
+        model_key="deepseek"
     )
+    model_handler.display_model_info()
     llm_instance = model_handler.get_model_instance()
-    print(llm_instance.model_name,llm_instance.base_url)
     # Now you can use llm_instance for further operations
